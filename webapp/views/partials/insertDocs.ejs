@@ -1,0 +1,56 @@
+<div class="insDoc" id="insertDoc">
+    <h1>Insert Document</h1>
+    
+    <form method="POST" action="/insert">
+        <input type="date" name="FlightDate" placeholder="Flight Date" value = '' required />
+        <input name="Source" placeholder = "Source" type="text" value = '' required />
+        <input name="Destination" placeholder = "Destination" type="text" value = '' required />
+        <br><br>
+
+        <input name="Cancelled" placeholder = "Cancelled" type="number" value = '' required/>
+        <input name="ArrivalDelay" placeholder = "Arrival Delay" type="number" value = '' type="number" />
+        <input name="AirTime" placeholder = "Air Time" type="number" value = '' />
+        <br><br>
+        
+        <input name="Distance" placeholder = "Distance" type="number" value = ''/>
+        <input name="DepartureTime" placeholder = "Departure Time" type="number" value = ''/>
+        <input name="DepartureDelay" placeholder = "Departure Delay" type="number" value = ''/>
+        <br><br>
+        
+        <input name="Diverted" placeholder = "Diverted" type="number" value = ''/>
+        <input name="CancellationCode" placeholder = "Cancellation Code" type="number" value = ''/>
+        <input name="CRSArTime" placeholder = "CRS Arrival Time" type="number" value = ''/>
+        <br><br>
+        
+        <input name="Carrier" placeholder = "Op Carrier" type="text" value = ''/>
+        <input name="OPCarrier" placeholder = "OP Carier Number" type="number" value = ''/>
+        <input name="CRSDepartureTime" placeholder = "CRS Departure Time" type="number" value = ''/>
+        <br><br>
+        
+        <input name="TAXIout" placeholder = "Taxi Out" type="number" value = ''/>
+        <input name="TAXIin" placeholder = "Taxi In" type="number" value = ''/>
+        <input name="WheelsOff" placeholder = "Wheels Off" type="number" value = ''/>
+        <br><br>
+        
+        <input name="ARRTim" placeholder = "Arrival Time" type="number" value = ''/>
+        <input name="CRS_ELAPSED_TIME" placeholder = "CRS Elapsed Time" type="number" value = ''/>
+        <input name="ACTUAL_ELAPSED_TIME" placeholder = "Actual Elapsed Time" type="number" value = ''/>
+        <br><br>
+        
+        <input name="Wheelson" placeholder = "Wheels On" type="number" value = ''/>
+        <br><br>
+        
+        <button type="submit">Insert Document</button>
+    </form>
+    <hr>
+    <form method="POST" action="/insertFile">
+      <input type="file" name="filename">
+      <button type="submit">Insert Documents</button>
+      <br>
+      <p style="padding-top: 20px;"><strong>Note</strong> : The file should be in format .csv</p>
+      <p><strong>Columns</strong> : FL_DATE ,OP_CARRIER ,OP_CARRIER_FL_NUM ,ORIGIN ,DEST ,CRS_DEP_TIME, DEP_TIME ,DEP_DELAY ,TAXI_OUT
+        ,WHEELS_OFF, WHEELS_ON ,TAXI_IN ,CRS_ARR_TIME ,ARR_TIME ,ARR_DELAY, CANCELLED ,CANCELLATION_CODE
+        ,DIVERTED ,CRS_ELAPSED_TIME ,ACTUAL_ELAPSED_TIME ,AIR_TIME ,DISTANCE</p>
+    </form>
+  
+  </div>

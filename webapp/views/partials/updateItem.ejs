@@ -1,0 +1,37 @@
+<div class="updDoc" id="updateDoc">
+    <h1>Update Document</h1>
+    <form action="/update" method="post">
+        
+        <input type="text" name="Object_id" placeholder="Enter Object Id" required>
+        <select name="colname">
+            <option>FL_DATE</option>
+            <option>OP_CARRIER</option>
+            <option>OP_CARRIER_FL_NUM</option>
+            <option>ORIGIN</option>
+            <option>DEST</option>
+            <option>CRS_DEP_TIME</option>
+            <option>DEP_TIME</option>
+            <option>DEP_DELAY</option>
+            <option>TAXI_OUT</option>
+            <option>WHEELS_OFF</option>
+            <option>WHEELS_ON</option>
+            <option>TAXI_IN</option>
+            <option>CRS_ARR_TIME</option>
+            <option>ARR_TIME</option>
+            <option>ARR_DELAY</option>
+            <option>CANCELLED</option>
+            <option>CANCELLATION_CODE</option>
+            <option>DIVERTED</option>
+            <option>CRS_ELAPSED_TIME</option>
+            <option>ACTUAL_ELAPSED_TIME</option>
+            <option>AIR_TIME</option>
+            <option>DISTANCE</option>
+        </select>
+
+        <input type="text" name="changeto" placeholder="Change to " required/>
+        <br><br>
+        <button type="submit">Update</button>
+        <p style="padding-top: 20px;"><strong>Note :</strong>You can get Object Id from above in <a href="#showData">Show Data Section</a>.</p>
+    
+    </form>
+</div>

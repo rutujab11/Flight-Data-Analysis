@@ -1,0 +1,23 @@
+<div id="MapReduce">
+
+    <h1>Map Reduce</h1>
+
+    <form action="/mapreduce" method="post">
+        
+        <input type="text" name="Origin" placeholder="Source">
+        <button type="submit">Get Statistics</button>
+
+    </form>
+    <%if(mapRed != null){%>
+    <div class="stats">
+
+        <p>Process Time to get Origin : <%= mapRed.processtime %><br>
+        Total Dataset : <%= mapRed.counts.input %><br>
+        Total Emits : <%= mapRed.counts.reduce %><br>
+        Total Matches : <%= mapRed.counts.output %><br>        
+        Total Map Time : <%= mapRed.timing.mapTime%><br>
+        Total Reduce Time : <%= mapRed.timing.reduceTime%></p>
+
+    </div>
+    <%}%>
+</div>

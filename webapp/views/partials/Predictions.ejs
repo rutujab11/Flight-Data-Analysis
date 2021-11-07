@@ -1,0 +1,67 @@
+<div id="predictions">
+    <h1>Predictions</h1>
+
+    <h3>Logistics Regression</h3>
+    <form action="/logistic" method="post">
+        <input type="text" name="Sour" placeholder="Source" required>
+        <input type="text" name="Dest" placeholder="Destination" required>
+        <input type="text" name="Arr_Time" placeholder="Arrival Time" required>
+        <br><br>
+        <input type="text" name="Arr_Delay" placeholder="Arrival Delay" required>
+        <input type="text" name="Dep_Time" placeholder="Departure Time" required>
+        <input type="text" name="Dep_Delay" placeholder="Departure Delay" required>
+        <br><br>
+        <button type="submit">Get Predictions</button>
+    </form>
+
+    <% if(predictionResults != null ){ %>
+        <% if(predictionResults === true){ %>
+            <div class="boxSucess">
+                <h3><strong>Hurray!!</strong> The plane will not get Cancelled.</h3>
+            </div>
+        <%}%>
+        <% if(predictionResults === false){ %>
+            <div class="boxFailure">
+                <h3><strong>Oh ho!!</strong> There are high chances of plane cancellation.</h3>
+            </div>
+        <%}%>
+    <%}%>
+
+    <h3>KMeans</h3>
+    <form action="/kmeans" method="post">
+        
+        <input type="text" name="AD" placeholder="Source" required>
+        <input type="text" name="DD" placeholder="Destination" required>
+        <select name="clusters">
+            <option>5</option>
+            <option>4</option>
+            <option>3</option>
+            <option>2</option>
+            <option>1</option>
+        </select>
+        <br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <% if(KmeanResults.length != 0 ){ %>
+        <div class="container table-responsive" style="margin-bottom: 5%;">
+            <div id="table">
+                <table class="table">
+                    <thead>
+                        <tr>
+                        <th class="scope">Cluster No</th>
+                        <th class="scope">Centroid : X</th>
+                        <th class="scope">Centroid : Y</th>
+                        </tr>
+                    </thead>
+                    <%for(var i = 0 ; i < KmeanResults.length ; i++){ %>
+                        <tr>
+                        <td><%= i+1 %></td>
+                        <td><%= KmeanResults[i].centroid[0] %></td>
+                        <td><%= KmeanResults[i].centroid[1] %></td>
+                        </tr>
+                    <% } %>
+                </table>
+            </div>
+        </div>
+    <%}%>
+</div>

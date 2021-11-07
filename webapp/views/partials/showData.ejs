@@ -1,0 +1,51 @@
+<section class="midSection" id="showData">
+    <h1>Show Data</h1>
+    <div>
+      <form method="POST" action="/">
+          <input name="Source" placeholder = "Source" required/>
+          <input name="Destination" placeholder = "Destination" required/>
+          <button id="subBtn" type="submit">Show Data</button>
+      </form>
+
+      <% if(docs.length != 0 ){ %>
+        <div  class="container table-responsive">
+          <div id="table">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th class="scope">ID</th>
+                    <th class="scope">Date</th>
+                    <th class="scope">Origin</th>
+                    <th class="scope">Destination</th>
+                    <th class="scope">Cancellation</th>
+                    <th class="scope">Arrival Delay</th>
+                    <th class="scope">Departure Delay</th>
+                  </tr>
+                </thead>
+
+                <% for(var i = 0 ; i < docs.length ; i++){ %>
+                    <tr>
+                      <td id="doc_id"><%= docs[i]._id %></td>
+                      <td><%= docs[i].FL_DATE %></td>
+                      <td><%= docs[i].ORIGIN %></td>
+                      <td><%= docs[i].DEST %></td>
+                      <td><%= docs[i].CANCELLED %></td>
+                      <td><%= docs[i].ARR_DELAY %></td>
+                      <td><%= docs[i].DEP_DELAY %></td>
+                    </tr>
+                <% } %>
+            </table>
+          </div>
+        </div>
+        <div class="rowStatus">
+          <tr>
+            <td>Rows : <%= docs.length%></td>
+          </tr>
+        </div>
+          
+      
+    </div>
+    <br><br>
+</section>
+
+<% } %>
