@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Flight Analysis</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <style>
+    
+      .axis text {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 10pt;
+      }
+      .axis .label {
+        font-size: 20pt;
+      }
+
+      .axis path, .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: crispEdges;
+      }
+      .circles 
+      {
+         stroke: #000;
+        stroke-opacity: .4;
+      }
+
+    </style>
+  </head>
+  <body>
+      <h2 style="text-align: center;">Arrival Delay vs Departure Delay</h2>
+    <script>
+    
+
+      var outerWidth = 1200;
+      var outerHeight = 500;
+      var margin = { left: 200, top: 60, right: 60, bottom: 60 };
+      var rMin = 1; // "r" stands for radius
+      var rMax = 6;
+      var xColumn = "DEP_DELAY";
+      var yColumn = "ARR_DELAY";
+      var r = 5;
+      //var colorColumn = "ORIGIN";
+      var opacityScale = d3.scale.linear()
+       .domain([0.0,30.0])
+        .range([0.10, .80]);
+
+      var xAxisLabelText = "Departure Delay";
+      var xAxisLabelOffset = 40;
+
+      var yAxisLabelText = "Arrival Delay";
+      var yAxisLabelOffset = 60;
+
+      var innerWidth  = outerWidth  - margin.left - margin.right;
+      var innerHeight = outerHeight - margin.top  - margin.bottom;
+
+      var svg = d3.select("body").append("svg")
+        .attr("width", outerWidth)
+        .attr("height", outerHeight);
+      var g = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      var xAxisG = g.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + innerHeight + ")")
+      var xAxisLabel = xAxisG.append("text")
+        .style("text-anchor", "middle")
+        .attr("x", innerWidth / 2)
+        .attr("y", xAxisLabelOffset)
+        .attr("class", "label")
+        .text(xAxisLabelText);
+      var yAxisG = g.append("g")
+        .attr("class", "y axis");
+      var yAxisLabel = yAxisG.append("text")
+        .style("text-anchor", "middle")
+        .attr("transform", "translate(-" + yAxisLabelOffset + "," + (innerHeight / 2) + ") rotate(-90)")
+        .attr("class", "label")
+        .text(yAxisLabelText);
+
+      var xScale = d3.scale.linear().range([0, innerWidth]);
+      var yScale = d3.scale.linear().range([innerHeight, 0]);
+      var colorScale = d3.scale.category10();
+
+      var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
+        
+      var yAxis = d3.svg.axis().scale(yScale).orient("left")
+      
+
+      function render(data){
+        xScale.domain(d3.extent(data, function (d){ return d[xColumn]; }));
+        yScale.domain(d3.extent(data, function (d){ return d[yColumn]; }));
+       
+        xAxisG.call(xAxis);
+        yAxisG.call(yAxis);
+
+        var circles = g.selectAll("circle").data(data);
+        circles.enter().append("circle");
+        /*var circles = d3.select("body")
+               .select("svg")
+              .selectAll(".circles");*/
+        circles
+          .attr("cx",      function (d){ return       xScale(d[xColumn]);     })
+          .attr("cy",      function (d){ return       yScale(d[yColumn]);     })
+          .attr("r",2.5)
+          .attr("fill-opacity", function(d, i) { return opacityScale(i); });
+
+        circles.exit().remove();
+      }
+
+      function type(d){
+        d.DEP_DELAY = +d.DEP_DELAY;
+      
+        d.ARR_DELAY= +d.ARR_DELAY;
+         return d;
+      }
+
+      d3.csv("567.csv", type, render);
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,322 @@
+body{
+    margin: 0;
+    padding-bottom: 0;
+    background-color: #fae7cb;
+}
+
+/*---------------------------Header-----------------------------*/
+.navitems{
+
+    display: inline-block;
+    background-color: #ffd31d;
+    font-family: 'Manrope', sans-serif;
+    color: white;
+    padding: 2%;
+
+}
+
+.navitems:hover{
+    border-bottom: 3px solid #ff7272;
+    text-decoration: none;
+    color: #ff7272;
+}
+
+.navs{
+    text-align: center;
+}
+
+.navb{
+    background-color: #ffd31d;
+    padding: auto;
+}
+
+.mHeader{
+
+    background-color: #ffd31d;
+    color: white;
+    padding: 10%;
+    margin: 0;
+    font-family: 'Roboto';
+    font-weight: 400;
+    text-align: center;
+}
+
+/*----------------------------------------------------------------*/
+
+input,select{
+
+    padding : 15px;
+    font-family: 'Manrope', sans-serif;
+    background-color: white;
+    font-weight: 600;
+    width: 25%;
+    border: none;
+    margin: 20px;
+    border-bottom: 3px solid lightgray;
+    outline: none;
+}
+
+form{
+    padding: 60px;
+    margin: 0;
+    text-align: center;
+    background-color: #fae7cb;
+}
+
+button{
+
+    padding : 15px;
+    background-color: #ff8989;
+    font-family: 'Manrope',sans-serif;
+    border:none;
+    color: white;
+    font-weight: 600;
+    width: 20%;
+    margin-left: 10px;
+    border-bottom: 3px solid #ff7272;
+    outline: none;
+}
+button:hover{
+
+    background-color: #ff7272;
+    border-bottom: 3px solid #ff8989;
+}
+
+h1{
+    font-family: 'Roboto',sans-serif;
+    font-weight: 600;
+    padding-left: 10%;
+    background-color: #fae7cb;
+}
+
+
+
+
+table{
+    text-align: center;
+    background-color: white;
+    table-layout: fixed;
+}
+
+thead{
+    background-color: #ff7272;
+    color: white;
+    font-family: 'Manrope',sans-serif;
+    
+}
+td{
+    padding: 2%;
+    font-family: 'Manrope',sans-serif;
+    width: 1rem;
+}
+
+#doc_id{
+
+    font-size: small;
+}
+
+.container{
+    height: 300px;
+    background-color: #fae7cb;
+}
+.midSection{
+    padding-top: 5%;
+    padding-bottom: 0px;
+    background-color: #fae7cb;
+}
+.rowStatus{
+    background-color: #ff7272;
+    color: white;
+    font-family: 'Manrope',sans-serif;
+    margin-left: 9%;
+    margin-right: 10%;
+    padding: 10px;
+}
+
+p{
+    font-family: 'Manrope',sans-serif;
+}
+
+/*--------------------------Insert Document---------------------------*/
+
+.insDoc{
+
+    background-color: #fae7cb;
+    color: black;
+    padding-top: 5%;
+    padding-bottom: 1%;
+}
+
+hr{
+    text-align: center;
+    background-color: #fae7cb;
+    width: 25%;
+}
+
+/*---------------------------------------------------------------------*/
+
+/*------------------------------MAP REDUCE-----------------------------*/
+
+
+#MapReduce{
+    background-color: #ffd31d;
+    padding-top: 5%;
+}
+
+#MapReduce h1{
+    color: white;
+    background-color: #ffd31d;
+}
+
+#MapReduce form{
+
+    background-color: #ffd31d;
+}
+
+.stats{
+    padding: 5%;
+}
+
+.stats p{
+    color: white;
+    font-family: 'Manrope',sans-serif;
+    text-align: center;
+    font-size: larger;
+    line-height: 2;
+}
+
+/*---------------------------------------------------------------------*/
+
+/*----------------------------UPDATE DOCUMENT--------------------------*/
+.updDoc{
+
+    padding-top: 5%;
+    background-color: #fae7cb;
+
+}
+/*-----------------------------------------------------------------------*/
+
+
+
+/*----------------------------DELETE DOCUMENT----------------------------*/
+
+.DelDoc{
+
+    padding-top: 5%;
+    background-color: #ffd31d;
+}
+
+#DeleteDoc h1{
+    background-color: #ffd31d;
+    color: white;
+}
+
+.delForm{
+    background-color: #ffd31d;
+}
+
+.delForm p{
+    color: #ff7272;
+    padding-top: 20px;
+}
+
+/*------------------------------------------------------------------------*/
+
+
+
+/*---------------------------------FOOTER---------------------------------*/
+footer{
+    padding: 5%;
+    background-color: #ffd31d;
+    
+}
+
+footer a{
+    color: white;
+}
+
+footer a:hover{
+    color: black;
+}
+
+/*-------------------------------------------------------------------------*/
+
+h3{
+    font-family: 'Roboto',sans-serif;
+    font-weight: 400;
+    padding-top: 5%;
+    text-align: center;
+}
+
+h4{
+    text-align: center;
+    font-family: 'Roboto',sans-serif;
+}
+
+.boxSucess h3{
+
+    background-color: lightgreen;
+    color: green;
+    font-weight: 300;
+    text-align: center;
+    padding: 20px;
+}
+
+.boxFailure h3{
+
+    background-color: tomato;
+    color: red;
+    font-weight: 300;
+    text-align: center;
+    padding: 20px;
+}
+
+.boxSucess , .boxFailure{
+    margin: auto;
+    text-align: center;
+}
+
+
+/*---------------------------------VISUALIZE---------------------------------*/
+.Visualize{
+
+    padding-top: 2%;
+    background: #ffd31d;
+    color: white;
+}
+
+#Visualization{
+    background-color: #ffd31d;
+    margin-bottom: 5%;
+}
+
+
+.titles{
+    width: 300px;
+    padding-top: 5%;
+}
+
+#chart1:hover,
+#chart2:hover,
+#chart3:hover,
+#chart4:hover{
+
+    color: #ff7272;
+}
+
+.imgBlock{
+    
+    padding: 2%;
+}
+
+.images{
+   margin: auto;
+   display: block;
+   text-align: center;
+}
+
+h5{
+    text-align: center;
+    padding: 20px;
+}
+/*--------------------------------------------------------------------------*/

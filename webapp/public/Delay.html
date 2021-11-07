@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Flight Analysis</title>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <style>
+    
+      .axis text {
+        font-family: 'Open Sans', sans-serif;
+        font-size: 16pt;
+      }
+      .axis .label {
+        font-size: 20pt;
+      }
+
+      .axis path, .axis line {
+        fill: none;
+        stroke: #000;
+        shape-rendering: auto;
+      }
+
+      .x.axis text {
+        font-size: 10pt;
+      }
+
+    </style>
+  </head>
+  <body>
+    <h2 style="text-align: center;">Average Aircraft delay value vs Aircraft Delay Reasons</h2>
+    <script>
+      var outerWidth = 1200;
+      var outerHeight = 500;
+      var margin = { left: 120, top: 60, right: 60, bottom: 60 };
+      var barPadding = 0.1;
+
+      var xColumn = "DELAY_REASONS";
+      var yColumn = "AVG";
+      var colorColumn = "DELAY_REASONS";
+
+      var xAxisLabelText = "Delay Reasons";
+      var xAxisLabelOffset = 40;
+
+      var yAxisLabelText = "Value";
+      var yAxisLabelOffset = 50;
+
+      var innerWidth  = outerWidth  - margin.left - margin.right;
+      var innerHeight = outerHeight - margin.top  - margin.bottom;
+
+      var svg = d3.select("body").append("svg")
+        .attr("width",  innerWidth)
+        .attr("height", outerHeight);
+      var g = svg.append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      var xAxisG = g.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + innerHeight + ")");
+      
+      var xAxisLabel = xAxisG.append("text")
+        .style("text-anchor", "middle")
+        .attr("transform", "translate(" + (innerWidth / 2) + "," + xAxisLabelOffset + ") ")
+        .attr("class", "label")
+        .text(xAxisLabelText);
+
+      var yAxisG = g.append("g")
+        .attr("class", "y axis");
+      
+      var yAxisLabel = yAxisG.append("text")
+        .style("text-anchor", "middle")
+        .attr("transform", "translate(-" + yAxisLabelOffset + "," + (innerHeight / 2) + ") rotate(-90)") //positioning of 
+        .attr("class", "label")
+        .text(yAxisLabelText);
+
+
+      var xScale = d3.scale.ordinal().rangeBands([0, innerWidth], barPadding);
+      var yScale = d3.scale.linear().range([innerHeight, 0]);
+      var colorScale = d3.scale.category10();
+
+      
+
+      var xAxis = d3.svg.axis().scale(xScale).orient("bottom");
+  
+      var yAxis = d3.svg.axis().scale(yScale).orient("left");
+       
+
+      function render(data){
+
+        xScale.domain(       data.map( function (d){ return d[xColumn]; }));
+        yScale.domain([0, d3.max(data, function (d){ return d[yColumn]; })]);
+        colorScale.domain(data.map(function (d){ return d[colorColumn]; }));
+
+        xAxisG
+          .call(xAxis)
+          .selectAll("text")  
+          .attr("dx", "-.8em")
+          .attr("dy", "1em");
+          
+
+        yAxisG.call(yAxis);
+
+  var bars = g.selectAll("rect").data(data);
+        bars.enter().append("rect")
+          .attr("width", xScale.rangeBand());
+        bars
+          .attr("x", function (d){ return xScale(d[xColumn]); })
+          .attr("y", function (d){ return yScale(d[yColumn]); })
+          .attr("height", function (d){ return innerHeight - yScale(d[yColumn]); })
+          .attr("fill", function (d){ return colorScale(d[colorColumn]); })
+          .append("text")
+           .text(function(d) {                 
+                    return d[yColumn];
+           })
+           .attr("text-anchor", "middle")
+           .attr("x", function (d){ return xScale(d[xColumn]+xScale.rangeBand()/2); })
+          .attr("y", function (d){ return yScale(d[yColumn])+10; })
+           .attr("font-family", "sans-serif")
+           .attr("font-size", "11px")
+           .attr("fill", "white");
+       // bars.exit().remove();
+      }
+
+      function type(d){
+        d.AVG = +d.AVG;
+        return d;
+      }
+
+      d3.csv("567.csv", type, render);
+
+    </script>
+  </body>
+</html>
